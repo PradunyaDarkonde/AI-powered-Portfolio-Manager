@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Profile | FinAdvisor</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-50">
+  <div class="min-h-screen flex flex-col">
+    <!-- Top Navigation -->
+    <nav class="bg-white shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+          <div class="flex">
+            <div class="flex-shrink-0 flex items-center">
+              <svg class="h-8 w-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <span class="ml-2 text-xl font-bold text-gray-900">FinAdvisor</span>
+            </div>
+            <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+              <a href="dashboard.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                Dashboard
+              </a>
+              <a href="stocks.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                Stocks
+              </a>
+              <a href="about.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                About Us
+              </a>
+              <a href="help.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                Help
+              </a>
+            </div>
+          </div>
+          <div class="hidden sm:ml-6 sm:flex sm:items-center">
+            <button class="bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+              <span class="sr-only">View notifications</span>
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+              </svg>
+            </button>
+
+            <!-- Profile dropdown -->
+            <div class="ml-3 relative">
+              <div>
+                <button type="button" class="bg-white rounded-full flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                  <span class="sr-only">Open user menu</span>
+                  <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                </button>
+              </div>
+              <div class="hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1" id="user-menu">
+                <a href="profile.html" class="block px-4 py-2 text-sm text-gray-700 bg-gray-100" role="menuitem" tabindex="-1">Your Profile</a>
+                <a href="settings.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1">Settings</a>
+                <a href="login.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1">Sign out</a>
+              </div>
+            </div>
+          </div>
+          <div class="-mr-2 flex items-center sm:hidden">
+            <!-- Mobile menu button -->
+            <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500" aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-button">
+              <span class="sr-only">Open main menu</span>
+              <svg class="block h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile menu, show/hide based on menu state. -->
+      <div class="hidden sm:hidden" id="mobile-menu">
+        <div class="pt-2 pb-3 space-y-1">
+          <a href="dashboard.html" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Dashboard</a>
+          <a href="stocks.html" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Stocks</a>
+          <a href="about.html" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">About Us</a>
+          <a href="help.html" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Help</a>
+        </div>
+        <div class="pt-4 pb-3 border-t border-gray-200">
+          <div class="flex items-center px-4">
+            <div class="flex-shrink-0">
+              <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+            </div>
+            <div class="ml-3">
+              <div class="text-base font-medium text-gray-800">John Doe</div>
+              <div class="text-sm font-medium text-gray-500">john@example.com</div>
+            </div>
+          </div>
+          <div class="mt-3 space-y-1">
+            <a href="profile.html" class="bg-gray-50 block px-4 py-2 text-base font-medium text-gray-800">Your Profile</a>
+            <a href="settings.html" class="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100">Settings</a>
+            <a href="login.html" class="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100">Sign out</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-1 py-6">
+      <div class="max-w-7xl mx-auto px-4 sm
+:px-6 lg:px-8">
+        <h1 class="text-2xl font-semibold text-gray-900">Your Profile</h1>
+        
+        <!-- Profile Overview -->
+        <div class="mt-6 bg-white shadow overflow-hidden sm:rounded-lg">
+          <div class="px-4 py-5 sm:px-6 flex items-center justify-between">
+            <div class="flex items-center">
+              <img class="h-16 w-16 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+              <div class="ml-4">
+                <h2 class="text-xl font-bold text-gray-900">John Doe</h2>
+                <p class="text-sm text-gray-500">Member since January 2022</p>
+              </div>
+            </div>
+            <a href="settings.html" class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+              Edit Profile
+            </a>
+          </div>
+          <div class="border-t border-gray-200">
+            <dl>
+              <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500">Full name</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">John Doe</dd>
+              </div>
+              <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500">Email address</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">john@example.com</dd>
+              </div>
+              <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500">Phone number</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">(555) 123-4567</dd>
+              </div>
+              <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500">Subscription plan</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                    Premium
+                  </span>
+                </dd>
+              </div>
+              <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500">Account status</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                    Active
+                  </span>
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+
+        <!-- Investment Profile -->
+        <div class="mt-8">
+          <h2 class="text-xl font-semibold text-gray-900 mb-4">Investment Profile</h2>
+          <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+            <div class="px-4 py-5 sm:px-6">
+              <h3 class="text-lg leading-6 font-medium text-gray-900">Risk Tolerance and Goals</h3>
+            </div>
+            <div class="border-t border-gray-200">
+              <dl>
+                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt class="text-sm font-medium text-gray-500">Risk tolerance</dt>
+                  <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Moderate</dd>
+                </div>
+                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt class="text-sm font-medium text-gray-500">Investment horizon</dt>
+                  <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">5-10 years</dd>
+                </div>
+                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt class="text-sm font-medium text-gray-500">Primary goal</dt>
+                  <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Retirement savings</dd>
+                </div>
+                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt class="text-sm font-medium text-gray-500">Secondary goal</dt>
+                  <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Capital appreciation</dd>
+                </div>
+                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt class="text-sm font-medium text-gray-500">Preferred sectors</dt>
+                  <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 mr-2">
+                      Technology
+                    </span>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 mr-2">
+                      Healthcare
+                    </span>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                      Renewable Energy
+                    </span>
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </div>
+
+        <!-- Investment History -->
+        <div class="mt-8">
+          <h2 class="text-xl font-semibold text-gray-900 mb-4">Investment History</h2>
+          
+          <!-- Performance Chart -->
+          <div class="bg-white shadow overflow-hidden sm:rounded-lg mb-6">
+            <div class="px-4 py-5 sm:p-6">
+              <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">Portfolio Performance</h3>
+              <canvas id="performanceChart" height="250"></canvas>
+            </div>
+          </div>
+          
+          <!-- Recent Transactions -->
+          <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+            <div class="px-4 py-5 sm:px-6">
+              <h3 class="text-lg leading-6 font-medium text-gray-900">Recent Transactions</h3>
+            </div>
+            <div class="border-t border-gray-200">
+              <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                  <thead class="bg-gray-50">
+                    <tr>
+                      <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                      <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
+                      <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Symbol</th>
+                      <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Shares</th>
+                      <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Price</th>
+                      <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total</th>
+                    </tr>
+                  </thead>
+                  <tbody class="bg-white divide-y divide-gray-200">
+                    <tr>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Aug 15, 2023</td>
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                          Buy
+                        </span>
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">AAPL</td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">10</td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$165.00</td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$1,650.00</td>
+                    </tr>
+                    <tr>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Aug 10, 2023</td>
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                          Sell
+                        </span>
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">TSLA</td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">5</td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$242.50</td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$1,212.50</td>
+                    </tr>
+                    <tr>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Aug 5, 2023</td>
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                          Buy
+                        </span>
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">MSFT</td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">8</td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$325.00</td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$2,600.00</td>
+                    </tr>
+                    <tr>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Jul 28, 2023</td>
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                          Buy
+                        </span>
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">AMZN</td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">12</td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$135.25</td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$1,623.00</td>
+                    </tr>
+                    <tr>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Jul 20, 2023</td>
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                          Sell
+                        </span>
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">NFLX</td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">7</td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$425.75</td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$2,980.25</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="bg-gray-50 px-4 py-4 sm:px-6">
+              <div class="text-sm">
+                <a href="#" class="font-medium text-blue-600 hover:text-blue-500">
+                  View all transactions
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Financial Goals -->
+        <div class="mt-8">
+          <h2 class="text-xl font-semibold text-gray-900 mb-4">Financial Goals</h2>
+          <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <!-- Goal 1 -->
+            <div class="bg-white overflow-hidden shadow rounded-lg">
+              <div class="px-4 py-5 sm:p-6">
+                <h3 class="text-lg font-medium text-gray-900 mb-2">Retirement Fund</h3>
+                <div class="flex items-center mb-4">
+                  <div class="w-full bg-gray-200 rounded-full h-2.5">
+                    <div class="bg-blue-600 h-2.5 rounded-full" style="width: 65%"></div>
+                  </div>
+                  <span class="ml-2 text-sm font-medium text-gray-500">65%</span>
+                </div>
+                <div class="flex justify-between text-sm text-gray-500">
+                  <span>Current: $325,000</span>
+                  <span>Target: $500,000</span>
+                </div>
+                <p class="mt-2 text-sm text-gray-500">Target date: January 2040</p>
+              </div>
+            </div>
+
+            <!-- Goal 2 -->
+            <div class="bg-white overflow-hidden shadow rounded-lg">
+              <div class="px-4 py-5 sm:p-6">
+                <h3 class="text-lg font-medium text-gray-900 mb-2">Home Purchase</h3>
+                <div class="flex items-center mb-4">
+                  <div class="w-full bg-gray-200 rounded-full h-2.5">
+                    <div class="bg-blue-600 h-2.5 rounded-full" style="width: 40%"></div>
+                  </div>
+                  <span class="ml-2 text-sm font-medium text-gray-500">40%</span>
+                </div>
+                <div class="flex justify-between text-sm text-gray-500">
+                  <span>Current: $80,000</span>
+                  <span>Target: $200,000</span>
+                </div>
+                <p class="mt-2 text-sm text-gray-500">Target date: June 2025</p>
+              </div>
+            </div>
+
+            <!-- Goal 3 -->
+            <div class="bg-white overflow-hidden shadow rounded-lg">
+              <div class="px-4 py-5 sm:p-6">
+                <h3 class="text-lg font-medium text-gray-900 mb-2">Education Fund</h3>
+                <div class="flex items-center mb-4">
+                  <div class="w-full bg-gray-200 rounded-full h-2.5">
+                    <div class="bg-blue-600 h-2.5 rounded-full" style="width: 25%"></div>
+                  </div>
+                  <span class="ml-2 text-sm font-medium text-gray-500">25%</span>
+                </div>
+                <div class="flex justify-between text-sm text-gray-500">
+                  <span>Current: $25,000</span>
+                  <span>Target: $100,000</span>
+                </div>
+                <p class="mt-2 text-sm text-gray-500">Target date: September 2030</p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 text-right">
+            <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+              Add New Goal
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white mt-12">
+      <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+        <div class="border-t border-gray-200 pt-6">
+          <p class="text-sm text-gray-500 text-center">
+            &copy; 2023 FinAdvisor. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Toggle mobile menu
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+      const mobileMenu = document.getElementById('mobile-menu');
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Toggle user menu
+    document.getElementById('user-menu-button').addEventListener('click', function() {
+      const userMenu = document.getElementById('user-menu');
+      userMenu.classList.toggle('hidden');
+    });
+
+    // Performance chart
+    const ctx = document.getElementById('performanceChart').getContext('2d');
+    const performanceChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+        datasets: [
+          {
+            label: 'Your Portfolio',
+            data: [95000, 97500, 101000, 105000, 108000, 112000, 115000, 118000],
+            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+            borderColor: 'rgba(59, 130, 246, 1)',
+            borderWidth: 2,
+            pointBackgroundColor: 'rgba(59, 130, 246, 1)',
+            tension: 0.3
+          },
+          {
+            label: 'S&P 500',
+            data: [100000, 101500, 103000, 104500, 106000, 107500, 109000, 110500],
+            backgroundColor: 'rgba(107, 114, 128, 0.1)',
+            borderColor: 'rgba(107, 114, 128, 1)',
+            borderWidth: 2,
+            pointBackgroundColor: 'rgba(107, 114, 128, 1)',
+            tension: 0.3,
+            borderDash: [5, 5]
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: false,
+            grid: {
+              color: 'rgba(0, 0, 0, 0.05)'
+            },
+            ticks: {
+              callback: function(value) {
+                return '$' + value.toLocaleString();
+              }
+            }
+          },
+          x: {
+            grid: {
+              display: false
+            }
+          }
+        },
+        plugins: {
+          legend: {
+            position: 'top'
+          },
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                let label = context.dataset.label || '';
+                if (label) {
+                  label += ': ';
+                }
+                if (context.parsed.y !== null) {
+                  label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(context.parsed.y);
+                }
+                return label;
+              }
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
+
